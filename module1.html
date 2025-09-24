@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1 : Dossier de candidature</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f8fafc;
+            line-height: 1.6;
+            color: #334155;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .content {
+            padding: 2rem 1rem;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            color: #1e40af;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #475569;
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+        
+        h4 {
+            color: #64748b;
+            font-size: 1rem;
+            margin: 1rem 0 0.5rem 0;
+        }
+        
+        .objective {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            border-left: 4px solid #2563eb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .warning {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .warning h4 {
+            color: #dc2626;
+            margin-bottom: 1rem;
+        }
+        
+        .success {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .example {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .good-example {
+            border-left: 4px solid #10b981;
+            background: #f0fdf4;
+        }
+        
+        .bad-example {
+            border-left: 4px solid #ef4444;
+            background: #fef2f2;
+        }
+        
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        li {
+            margin: 0.5rem 0;
+        }
+        
+        strong {
+            color: #1e40af;
+        }
+        
+        .criteria-list {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .criteria-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .criteria-title {
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+        
+        .errors-list {
+            background: #fef2f2;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .errors-list h4 {
+            color: #dc2626;
+            margin-bottom: 1rem;
+        }
+        
+        .differences-list {
+            background: #f0fdf4;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .differences-list h4 {
+            color: #059669;
+            margin-bottom: 1rem;
+        }
+        
+        .tip {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .tip-title {
+            color: #d97706;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .star-method {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .star-item {
+            background: #f8fafc;
+            border-left: 4px solid #6366f1;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .star-letter {
+            font-weight: bold;
+            color: #6366f1;
+        }
+        
+        @media (max-width: 640px) {
+            .header {
+                padding: 1.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .content {
+                padding: 1rem;
+            }
+            
+            .back-btn {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-btn">← Retour à l'accueil</a>
+            <h1>📁 Module 1 : Dossier de candidature</h1>
+        </header>
+        
+        <div class="content">
+            <div class="objective">
+                <h3>🎯 Objectif du module</h3>
+                <p>Créer un dossier de candidature qui vous démarque et maximise vos chances de sélection.</p>
+                <p><strong>⏱️ Durée estimée :</strong> 2h de travail</p>
+            </div>
+
+            <h2>1. Comprendre les attentes du jury</h2>
+            
+            <h3>🔍 Ce que le jury évalue vraiment (et ce qu'on ne vous dit pas)</h3>
+            
+            <div class="criteria-list">
+                <div class="criteria-item">
+                    <div class="criteria-title">Maturité du projet</div>
+                    <p>Avez-vous une vision réaliste du métier ?</p>
+                </div>
+                <div class="criteria-item">
+                    <div class="criteria-title">Stabilité</div>
+                    <p>Êtes-vous là par défaut ou par conviction ?</p>
+                </div>
+                <div class="criteria-item">
+                    <div class="criteria-title">Adaptabilité</div>
+                    <p>Pouvez-vous gérer la charge émotionnelle ?</p>
+                </div>
+                <div class="criteria-item">
+                    <div class="criteria-title">Évolution</div>
+                    <p>Avez-vous réfléchi à votre carrière ?</p>
+                </div>
+                <div class="criteria-item">
+                    <div class="criteria-title">Cohérence</div>
+                    <p>Votre parcours a-t-il du sens ?</p>
+                </div>
+            </div>
+
+            <div class="errors-list">
+                <h4>⚠️ Les 3 erreurs qui éliminent immédiatement</h4>
+                <ol>
+                    <li><strong>"J'aime aider les gens"</strong> - Trop vague, tout le monde dit ça</li>
+                    <li><strong>Incohérence chronologique</strong> - Trous non expliqués dans le parcours</li>
+                    <li><strong>Méconnaissance du métier</strong> - Confondre aide-soignant et infirmier</li>
+                </ol>
+            </div>
+
+            <div class="differences-list">
+                <h4>✅ Ce qui fait la différence</h4>
+                <ul>
+                    <li><strong>Expériences concrètes</strong> (stage, bénévolat, proche malade)</li>
+                    <li><strong>Vocabulaire professionnel</strong> approprié</li>
+                    <li><strong>Vision précise</strong> du quotidien aide-soignant</li>
+                    <li><strong>Projet à 5 ans</strong> réfléchi</li>
+                </ul>
+            </div>
+
+            <div class="tip">
+                <div class="tip-title">💡 L'astuce qui change tout</div>
+                <p><em>Pensez comme un recruteur : ils cherchent quelqu'un qui va RÉUSSIR la formation et RESTER dans le métier. Prouvez ces deux points.</em></p>
+            </div>
+
+            <h2>2. Présenter votre parcours</h2>
+
+            <h3>🔄 La méthode STAR pour valoriser TOUTES vos expériences</h3>
+            
+            <p><strong>Même sans expérience médicale, vous avez des atouts :</strong></p>
+            
+            <h4>Exemple - Vous étiez caissier(ère) :</h4>
+            <div class="star-method">
+                <div class="star-item">
+                    <span class="star-letter">S</span>ituation : Contact client quotidien
+                </div>
+                <div class="star-item">
+                    <span class="star-letter">T</span>âche : Gérer les conflits, rassurer les clients âgés
+                </div>
+                <div class="star-item">
+                    <span class="star-letter">A</span>ction : Patience, écoute, adaptation à chaque profil
+                </div>
+                <div class="star-item">
+                    <span class="star-letter">R</span>ésultat : → <strong>Qualités aide-soignant</strong> : empathie, gestion du stress, communication
+                </div>
+            </div>
+
+            <h3>🎯 Transformer vos "handicaps" en forces</h3>
+
+            <div class="example good-example">
+                <strong>Reconversion tardive ?</strong><br>
+                → "Ma maturité me donne une vision claire du métier et de l'engagement"
+            </div>
+
+            <div class="example good-example">
+                <strong>Pas d'expérience médicale ?</strong><br>
+                → "Mon regard neuf et ma motivation intacte sont des atouts pour apprendre"
+            </div>
+
+            <div class="example good-example">
+                <strong>Échec dans un autre domaine ?</strong><br>
+                → "Cette expérience m'a appris la persévérance et confirmé ma vraie vocation"
+            </div>
+
+            <h3>📝 Structure de présentation gagnante</h3>
+            <ol>
+                <li><strong>Phrase d'accroche</strong> (votre "pourquoi" en une ligne)</li>
+                <li><strong>Parcours chronologique</strong> (3-4 étapes clés)</li>
+                <li><strong>Fil conducteur</strong> (ce qui relie tout vers le soin)</li>
+                <li><strong>Projection</strong> (votre vision à 5 ans)</li>
+            </ol>
+
+            <h4>✨ Exemples de fils conducteurs</h4>
+            <ul>
+                <li>"Le contact humain dans la vulnérabilité"</li>
+                <li>"L'accompagnement dans les moments difficiles"</li>
+                <li>"La technique au service de l'humain"</li>
+            </ul>
+
+            <h2>3. Rédiger votre projet professionnel</h2>
+
+            <h3>🎯 Exemple concret : Reconversion réussie</h3>
+            
+            <div class="example">
+                <strong>Parcours type (inspiré d'un cas réel) :</strong><br>
+                - Formation mécanique industrielle<br>
+                - 10 ans barman saisonnier<br>
+                - 2 ans médico-social (public handicapé)<br>
+                - Agent de service hospitalier<br>
+                - → Formation aide-soignant
+            </div>
+
+            <p><strong>Le fil conducteur gagnant :</strong></p>
+            <div class="example good-example">
+                <em>"Du technique vers l'humain : une évolution naturelle vers le soin"</em>
+            </div>
+
+            <h3>📝 Structure de projet professionnel en 3 parties</h3>
+
+            <h4>PARTIE 1 : Mon chemin vers le soin (150 mots)</h4>
+            <div class="example">
+"Ma formation technique m'a appris la rigueur et la précision. Mes années de barman m'ont révélé mon goût pour le contact humain et ma capacité d'adaptation. L'expérience en médico-social a été le déclic : accompagner des personnes vulnérables m'a donné un sens profond à mon travail. Devenir agent hospitalier était ma façon de me rapprocher du soin et de confirmer ma vocation."
+            </div>
+
+            <h4>PARTIE 2 : Pourquoi aide-soignant ? (100 mots)</h4>
+            <div class="example">
+"L'aide-soignant est au cœur du soin relationnel. C'est lui qui passe le plus de temps avec le patient, qui le rassure, l'accompagne dans ses gestes quotidiens. Mon expérience diverse me permet de m'adapter à tous les profils : la rigueur technique, l'écoute développée au bar, la patience apprise avec le handicap."
+            </div>
+
+            <h4>PARTIE 3 : Mon projet à 5 ans (100 mots)</h4>
+            <div class="example">
+"Je souhaite me spécialiser en gériatrie, un domaine où l'accompagnement humain est essentiel. À terme, je vise une évolution vers aide-soignant référent pour transmettre mes compétences et accompagner les nouveaux collègues dans leur intégration."
+            </div>
+
+            <h4>💡 Les phrases d'accroche qui marquent</h4>
+            <ul>
+                <li>"Mon parcours atypique est ma force"</li>
+                <li>"Chaque étape m'a rapproché du soin"</li>
+                <li>"De la technique à l'humain : une évolution logique"</li>
+            </ul>
+
+            <h2>4. Templates et outils pratiques</h2>
+
+            <div class="warning">
+                <h4>⚠️ ATTENTION : Utilisation de l'IA dans votre dossier</h4>
+                
+                <h4>🚫 RISQUES MAJEURS DE L'IA :</h4>
+                <ul>
+                    <li><strong>Détection facile</strong> : Les jurys reconnaissent le style IA (phrases trop parfaites, vocabulaire générique)</li>
+                    <li><strong>Manque d'authenticité</strong> : Votre personnalité disparaît, votre dossier ressemble à tous les autres</li>
+                    <li><strong>Incohérences</strong> : L'IA ne connaît pas VOTRE parcours réel</li>
+                    <li><strong>Piège à l'oral</strong> : Impossible de défendre un texte que vous n'avez pas écrit</li>
+                </ul>
+
+                <h4>✅ USAGE ACCEPTABLE :</h4>
+                <ul>
+                    <li>Correction orthographique uniquement</li>
+                    <li>Suggestions de reformulation (que vous adaptez)</li>
+                    <li>Vérification de la structure</li>
+                </ul>
+
+                <div class="tip">
+                    <div class="tip-title">💡 LA RÈGLE D'OR :</div>
+                    <p><em>"Si vous ne pouvez pas expliquer chaque phrase de votre dossier avec vos propres mots à l'oral, c'est que ce n'est pas VOUS qui l'avez écrit."</em></p>
+                </div>
+
+                <h4>🎯 CONSEIL PRO :</h4>
+                <p>Écrivez d'abord votre version personnelle, PUIS utilisez les outils pour améliorer la forme, jamais pour créer le fond.</p>
+            </div>
+
+            <h3>📋 Template de dossier type</h3>
+
+            <div class="success">
+                <h4>STRUCTURE DE DOSSIER GAGNANTE :</h4>
+                
+                <h4>🏷️ PAGE DE GARDE</h4>
+                <ul>
+                    <li>Nom, Prénom</li>
+                    <li>"Candidature formation Aide-Soignant"</li>
+                    <li>Établissement visé</li>
+                    <li>Photo professionnelle (optionnelle)</li>
+                </ul>
+
+                <h4>📄 LETTRE DE MOTIVATION (1 page)</h4>
+                <ul>
+                    <li>Accroche personnalisée</li>
+                    <li>Parcours en 3 étapes clés</li>
+                    <li>Projet professionnel</li>
+                    <li>Conclusion engageante</li>
+                </ul>
+
+                <h4>📋 CV CHRONOLOGIQUE (1 page)</h4>
+                <ul>
+                    <li>Formations</li>
+                    <li>Expériences (toutes valorisées)</li>
+                    <li>Compétences transversales</li>
+                    <li>Centres d'intérêt (si pertinents)</li>
+                </ul>
+
+                <h4>📝 PROJET PROFESSIONNEL (1-2 pages)</h4>
+                <ul>
+                    <li>Structure en 3 parties (vue section 3)</li>
+                    <li>Police Calibri 11 ou Arial 11</li>
+                    <li>Interligne 1,15</li>
+                    <li>Marges 2,5 cm</li>
+                </ul>
+            </div>
+
+            <h3>✅ Check-list de vérification finale</h3>
+
+            <h4>AVANT L'ENVOI :</h4>
+            <ul>
+                <li>□ Orthographe vérifiée (Antidote, Grammarly)</li>
+                <li>□ Nom de l'établissement exact partout</li>
+                <li>□ Cohérence des dates</li>
+                <li>□ Format PDF pour l'envoi</li>
+                <li>□ Taille totale < 5 Mo</li>
+                <li>□ Photocopies des diplômes jointes</li>
+                <li>□ Attestations d'expériences signées</li>
+            </ul>
+
+            <h4>TEST DE COHÉRENCE :</h4>
+            <ul>
+                <li>□ Mon "pourquoi" est clair dès la première page</li>
+                <li>□ Chaque expérience apporte quelque chose au projet</li>
+                <li>□ Mon évolution à 5 ans est réaliste</li>
+                <li>□ Un proche comprend mon projet en 2 minutes</li>
+            </ul>
+
+            <h3>📊 Grille d'auto-évaluation (/20)</h3>
+            <ul>
+                <li>Originalité de l'accroche : /5</li>
+                <li>Cohérence du parcours : /5</li>
+                <li>Réalisme du projet : /5</li>
+                <li>Qualité rédactionnelle : /5</li>
+            </ul>
+            <p><strong>Objectif minimum : 15/20</strong></p>
+
+            <div style="text-align: center; margin: 3rem 0;">
+                <a href="module2.html" style="background: #2563eb; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: 500;">
+                    Suivant : Module 2 - Lettre de motivation →
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
