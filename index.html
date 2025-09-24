@@ -492,10 +492,17 @@
             event.target.classList.add('active');
         }
         
-        // Affichage des modules (pour plus tard)
         function showModule(moduleId) {
-            alert(`Module ${moduleId} - Contenu détaillé à venir dans la version complète !`);
-        }
+    if (moduleId === 'module1') {
+        window.location.href = 'module1.html';
+    } else if (moduleId === 'module2') {
+        window.location.href = 'module2.html';
+    } else if (moduleId === 'module3') {
+        window.location.href = 'module3.html';
+    } else if (moduleId === 'bonus') {
+        window.location.href = 'bonus.html';
+    }
+}
         
         // Calcul de progression
         function updateProgress() {
