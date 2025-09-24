@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Concours Aide-Soignant</title>
+    <meta name="description" content="Formation complète pour réussir votre concours aide-soignant">
+    
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Concours AS">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: white;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            height: 6px;
+            border-radius: 3px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: #10b981;
+            height: 100%;
+            width: 0%;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #64748b;
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab-button.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+            background: rgba(37, 99, 235, 0.05);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 1.5rem 1rem;
+            min-height: 60vh;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .module-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .module-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+        
+        .module-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .module-description {
+            color: #6b7280;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background: #1d4ed8;
+        }
+        
+        .btn-secondary {
+            background: #64748b;
+        }
+        
+        .btn-secondary:hover {
+            background: #475569;
+        }
+        
+        .btn-success {
+            background: #10b981;
+        }
+        
+        .btn-success:hover {
+            background: #059669;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            background: white;
+            transition: all 0.2s;
+        }
+        
+        .checklist-item.completed {
+            background: #f0fdf4;
+            border-color: #10b981;
+        }
+        
+        .checklist-checkbox {
+            margin-right: 1rem;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .section {
+            margin-bottom: 2rem;
+        }
+        
+        .section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section h2::before {
+            content: '📚';
+            margin-right: 0.5rem;
+        }
+        
+        .example-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .example-good {
+            border-left: 4px solid #10b981;
+            background: #f0fdf4;
+        }
+        
+        .example-bad {
+            border-left: 4px solid #ef4444;
+            background: #fef2f2;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .warning-box h3 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .motivation-quote {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        @media (max-width: 640px) {
+            .header {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .tab-button {
+                padding: 0.75rem 0.25rem;
+                font-size: 0.75rem;
+            }
+            
+            .module-card {
+                padding: 1rem;
+            }
+            
+            .module-icon {
+                font-size: 1.5rem;
+            }
+            
+            .module-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎯 Formation Concours Aide-Soignant</h1>
+            <p>Votre guide complet pour réussir</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </header>
+        
+        <nav class="nav-tabs">
+            <button class="tab-button active" onclick="showTab('accueil')">🏠 Accueil</button>
+            <button class="tab-button" onclick="showTab('formation')">📚 Formation</button>
+            <button class="tab-button" onclick="showTab('checklist')">✅ Check-list</button>
+            <button class="tab-button" onclick="showTab('suivi')">📊 Suivi</button>
+        </nav>
+        
+        <!-- ONGLET ACCUEIL -->
+        <div id="accueil" class="tab-content active">
+            <div class="motivation-quote">
+                "Votre réussite = Cette formation + Votre travail + Votre motivation"
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="progressPercent">0%</div>
+                    <div class="stat-label">Progression</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Modules</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Semaines</div>
+                </div>
+            </div>
+            
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-icon">🚀</span>
+                    <h2 class="module-title">Commencez ici</h2>
+                </div>
+                <p class="module-description">Suivez cette formation étape par étape pour maximiser vos chances de réussite. Chaque module vous donne des outils concrets.</p>
+                <button class="btn" onclick="showTab('formation')">Commencer la formation</button>
+            </div>
+            
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-icon">📋</span>
+                    <h2 class="module-title">Planning 8 semaines</h2>
+                </div>
+                <p class="module-description">Répartissez votre préparation sur 8 semaines pour un résultat optimal.</p>
+                <button class="btn btn-secondary" onclick="showTab('suivi')">Voir mon planning</button>
+            </div>
+        </div>
+        
+        <!-- ONGLET FORMATION -->
+        <div id="formation" class="tab-content">
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-icon">📁</span>
+                    <h2 class="module-title">Module 1 : Dossier de candidature</h2>
+                </div>
+                <p class="module-description">Créer un dossier qui vous démarque et maximise vos chances de sélection.</p>
+                <button class="btn" onclick="showModule('module1')">Ouvrir le module</button>
+            </div>
+            
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-icon">✉️</span>
+                    <h2 class="module-title">Module 2 : Lettre de motivation</h2>
+                </div>
+                <p class="module-description">Rédiger une lettre authentique qui donne envie de vous rencontrer.</p>
+                <button class="btn" onclick="showModule('module2')">Ouvrir le module</button>
+            </div>
+            
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-icon">🗣️</span>
+                    <h2 class="module-title">Module 3 : Préparation entretien</h2>
+                </div>
+                <p class="module-description">Maîtriser les questions pièges et valoriser votre profil.</p>
+                <button class="btn" onclick="showModule('module3')">Ouvrir le module</button>
+            </div>
+            
+            <div class="module-card">
+                <div class="module-header">
+                    <span class="module-icon">🎁</span>
+                    <h2 class="module-title">Bonus : Outils pratiques</h2>
+                </div>
+                <p class="module-description">Planning, phrases d'accroche, ressources complémentaires.</p>
+                <button class="btn btn-success" onclick="showModule('bonus')">Voir les bonus</button>
+            </div>
+        </div>
+        
+        <!-- ONGLET CHECKLIST -->
+        <div id="checklist" class="tab-content">
+            <div class="section">
+                <h2>Validation du dossier</h2>
+                <div class="checklist-item">
+                    <input type="checkbox" class="checklist-checkbox" onchange="updateProgress()">
+                    <span>Orthographe vérifiée (Antidote, Grammarly)</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" class="checklist-checkbox" onchange="updateProgress()">
+                    <span>Nom de l'établissement exact partout</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" class="checklist-checkbox" onchange="updateProgress()">
+                    <span>Cohérence des dates</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" class="checklist-checkbox" onchange="updateProgress()">
+                    <span>Format PDF pour l'envoi</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" class="checklist-checkbox" onchange="updateProgress()">
+                    <span>Taille totale < 5 Mo</span>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Préparation entretien</h2>
+                <div class="checklist-item">
+                    <input type="checkbox" class="checklist-checkbox" onchange="updateProgress()">
+                    <span>Tenue professionnelle préparée</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" class="checklist-checkbox" onchange="updateProgress()">
+                    <span>Itinéraire et horaires vérifiés</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" class="checklist-checkbox" onchange="updateProgress()">
+                    <span>Questions de base répétées</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" class="checklist-checkbox" onchange="updateProgress()">
+                    <span>Mises en situation préparées</span>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" class="checklist-checkbox" onchange="updateProgress()">
+                    <span>Dossier original + 2 copies</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ONGLET SUIVI -->
+        <div id="suivi" class="tab-content">
+            <div class="module-card">
+                <h2>📅 Planning 8 semaines</h2>
+                <p><strong>Semaines 7-8 :</strong> Préparation du dossier</p>
+                <p><strong>Semaines 5-6 :</strong> Préparation entretien</p>
+                <p><strong>Semaines 3-4 :</strong> Perfectionnement</p>
+                <p><strong>Semaines 1-2 :</strong> Finalisation</p>
+            </div>
+            
+            <div class="module-card">
+                <h2>📝 Mes notes</h2>
+                <textarea id="personalNotes" style="width: 100%; height: 200px; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 8px;" placeholder="Notez vos réflexions, questions, points à améliorer..."></textarea>
+                <button class="btn" onclick="saveNotes()" style="margin-top: 1rem;">💾 Sauvegarder mes notes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation entre onglets
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-button');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(button => button.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        // Affichage des modules (pour plus tard)
+        function showModule(moduleId) {
+            alert(`Module ${moduleId} - Contenu détaillé à venir dans la version complète !`);
+        }
+        
+        // Calcul de progression
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checklist-checkbox');
+            const checked = document.querySelectorAll('.checklist-checkbox:checked');
+            const percentage = Math.round((checked.length / checkboxes.length) * 100);
+            
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('progressPercent').textContent = percentage + '%';
+            
+            // Sauvegarder l'état
+            const checkedStates = Array.from(checkboxes).map(cb => cb.checked);
+            localStorage.setItem('checklistProgress', JSON.stringify(checkedStates));
+            
+            // Mise à jour visuelle des éléments cochés
+            checkboxes.forEach((checkbox, index) => {
+                const item = checkbox.closest('.checklist-item');
+                if (checkbox.checked) {
+                    item.classList.add('completed');
+                } else {
+                    item.classList.remove('completed');
+                }
+            });
+        }
+        
+        // Sauvegarde des notes
+        function saveNotes() {
+            const notes = document.getElementById('personalNotes').value;
+            localStorage.setItem('personalNotes', notes);
+            alert('📝 Notes sauvegardées !');
+        }
+        
+        // Chargement des données sauvegardées
+        function loadSavedData() {
+            // Charger progression checklist
+            const savedProgress = localStorage.getItem('checklistProgress');
+            if (savedProgress) {
+                const states = JSON.parse(savedProgress);
+                const checkboxes = document.querySelectorAll('.checklist-checkbox');
+                checkboxes.forEach((checkbox, index) => {
+                    if (states[index]) {
+                        checkbox.checked = true;
+                    }
+                });
+                updateProgress();
+            }
+            
+            // Charger notes personnelles
+            const savedNotes = localStorage.getItem('personalNotes');
+            if (savedNotes) {
+                document.getElementById('personalNotes').value = savedNotes;
+            }
+        }
+        
+        // Installation PWA
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Afficher un bouton d'installation
+            const installButton = document.createElement('button');
+            installButton.textContent = '📱 Installer l\'app';
+            installButton.className = 'btn';
+            installButton.style.position = 'fixed';
+            installButton.style.bottom = '20px';
+            installButton.style.right = '20px';
+            installButton.style.zIndex = '1000';
+            
+            installButton.addEventListener('click', () => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        installButton.remove();
+                    }
+                });
+            });
+            
+            document.body.appendChild(installButton);
+        });
+        
+        // Initialisation au chargement
+        document.addEventListener('DOMContentLoaded', loadSavedData);
+    </script>
+</body>
+</html>
