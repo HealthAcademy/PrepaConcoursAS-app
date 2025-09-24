@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 3 : Préparation entretien</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f8fafc;
+            line-height: 1.6;
+            color: #334155;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #7c3aed, #5b21b6);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .content {
+            padding: 2rem 1rem;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            color: #7c3aed;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #475569;
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+        
+        h4 {
+            color: #64748b;
+            font-size: 1rem;
+            margin: 1rem 0 0.5rem 0;
+        }
+        
+        .objective {
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            border-left: 4px solid #7c3aed;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .question-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .question-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .question-number {
+            background: #7c3aed;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .trap {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .trap-title {
+            color: #dc2626;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .strategy {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .strategy-title {
+            color: #059669;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .example {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .example-mature {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .example-young {
+            background: #e0e7ff;
+            border-left: 4px solid #6366f1;
+        }
+        
+        .motivation-break {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+        
+        .motivation-break h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .situation-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .situation-title {
+            background: #1f2937;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .situation-scenario {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+        
+        .bad-response {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .good-response {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .golden-principles {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .principle-item {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .principle-number {
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .magic-phrases {
+            background: #ede9fe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .magic-phrases h4 {
+            color: #7c3aed;
+            margin-bottom: 1rem;
+        }
+        
+        .magic-phrases ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .magic-phrases li {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+            border-left: 3px solid #7c3aed;
+        }
+        
+        .posture-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .posture-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .posture-title {
+            font-weight: 600;
+            color: #7c3aed;
+            margin-bottom: 0.5rem;
+        }
+        
+        .emergency-tips {
+            background: #fef2f2;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .emergency-tips h4 {
+            color: #dc2626;
+            margin-bottom: 1rem;
+        }
+        
+        .emergency-scenario {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 3px solid #dc2626;
+        }
+        
+        .after-interview {
+            background: #f0f9ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .after-interview h4 {
+            color: #0369a1;
+            margin-bottom: 1rem;
+        }
+        
+        .stats-reminder {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .stats-reminder h4 {
+            color: #059669;
+            margin-bottom: 1rem;
+        }
+        
+        .navigation-btns {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            gap: 1rem;
+        }
+        
+        .nav-btn {
+            flex: 1;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .nav-btn.prev {
+            background: #64748b;
+            color: white;
+        }
+        
+        .nav-btn.next {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        li {
+            margin: 0.5rem 0;
+        }
+        
+        strong {
+            color: #7c3aed;
+        }
+        
+        @media (max-width: 640px) {
+            .header {
+                padding: 1.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .content {
+                padding: 1rem;
+            }
+            
+            .back-btn {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 1rem;
+            }
+            
+            .navigation-btns {
+                flex-direction: column;
+            }
+            
+            .question-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-btn">← Retour à l'accueil</a>
+            <h1>🗣️ Module 3 : Préparation entretien</h1>
+        </header>
+        
+        <div class="content">
+            <div class="objective">
+                <h3>🎯 Objectif du module</h3>
+                <p>Réussir l'entretien de motivation en maîtrisant les questions pièges et en valorisant votre profil.</p>
+                <p><strong>⏱️ Durée estimée :</strong> 3h de préparation + entraînements</p>
+            </div>
+
+            <h2>1. Les questions incontournables (et leurs vraies attentes)</h2>
+            
+            <h3>🗣️ Top 10 des questions + réponses stratégiques</h3>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">1</div>
+                    <div class="question-title">"Présentez-vous"</div>
+                </div>
+                
+                <div class="trap">
+                    <div class="trap-title">⚠️ Piège :</div>
+                    <p>Réciter son CV</p>
+                </div>
+                
+                <div class="strategy">
+                    <div class="strategy-title">✅ Stratégie :</div>
+                    <p>Votre pitch en 2 minutes avec fil conducteur</p>
+                </div>
+                
+                <div class="example example-mature">
+                    <strong>Exemple reconversion 40 ans :</strong><br>
+                    "Je suis Marie, 40 ans. Mon parcours m'a menée de l'esthétique à l'hôpital en passant par la maternité. Chaque étape m'a rapprochée du soin : l'écoute client, l'accompagnement maternel, et maintenant le contact patient comme ASH. Aujourd'hui, je veux aller plus loin dans la relation de soin."
+                </div>
+                
+                <div class="example example-young">
+                    <strong>Exemple jeune candidat :</strong><br>
+                    "Je suis Julie, 18 ans, bachelière ST2S. Mon choix d'orientation est le fruit de trois expériences : mes stages en EHPAD, l'accompagnement de ma grand-mère malade, et mon job d'été en centre de vacances adaptées. Ces expériences m'ont convaincue que ma place est auprès des personnes vulnérables."
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">2</div>
+                    <div class="question-title">"Pourquoi aide-soignant ?"</div>
+                </div>
+                
+                <div class="trap">
+                    <div class="trap-title">⚠️ Piège :</div>
+                    <p>"J'aime aider les gens"</p>
+                </div>
+                
+                <div class="strategy">
+                    <div class="strategy-title">✅ Stratégie :</div>
+                    <p>Vision concrète + expérience personnelle</p>
+                </div>
+                
+                <div class="example example-mature">
+                    <strong>Exemple reconversion 40 ans :</strong><br>
+                    "Comme ASH, j'ai réalisé que l'aide-soignant était l'acteur central du bien-être patient. C'est lui qui prend le temps d'écouter, qui adapte les soins à chaque personne. Ma maturité et mon expérience de mère me donnent cette patience naturelle pour accompagner la vulnérabilité."
+                </div>
+                
+                <div class="example example-young">
+                    <strong>Exemple jeune candidat :</strong><br>
+                    "L'aide-soignant allie technique et relationnel, c'est ce qui m'attire. Lors de mes stages, j'ai vu comment une aide-soignante pouvait transformer une toilette routinière en moment de dignité et de réconfort. C'est ce niveau d'impact humain que je recherche dans mon métier."
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">3</div>
+                    <div class="question-title">"Que savez-vous du métier ?"</div>
+                </div>
+                
+                <div class="trap">
+                    <div class="trap-title">⚠️ Piège :</div>
+                    <p>Rester dans le générique</p>
+                </div>
+                
+                <div class="strategy">
+                    <div class="strategy-title">✅ Stratégie :</div>
+                    <p>Détails précis du quotidien</p>
+                </div>
+                
+                <div class="example example-mature">
+                    <strong>Exemple reconversion 40 ans :</strong><br>
+                    "L'aide-soignant accompagne les actes de la vie quotidienne : toilette, repas, mobilisation. Mais c'est aussi lui qui rassure lors d'une nuit difficile, qui remarque un changement d'état, qui fait le lien avec l'équipe soignante. J'ai pu l'observer pendant mes 6 mois d'ASH au service gériatrie."
+                </div>
+                
+                <div class="example example-young">
+                    <strong>Exemple jeune candidat :</strong><br>
+                    "Au-delà des soins d'hygiène et de confort, l'aide-soignant est observateur : il détecte les changements, transmet les informations à l'infirmier. Mes stages m'ont montré qu'il fallait s'adapter à chaque patient, être à la fois technique et empathique."
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">4</div>
+                    <div class="question-title">"Vos points faibles ?"</div>
+                </div>
+                
+                <div class="trap">
+                    <div class="trap-title">⚠️ Piège :</div>
+                    <p>Dire un vrai défaut rédhibitoire</p>
+                </div>
+                
+                <div class="strategy">
+                    <div class="strategy-title">✅ Stratégie :</div>
+                    <p>Défaut qui devient atout + solution</p>
+                </div>
+                
+                <div class="example example-mature">
+                    <strong>Exemple reconversion 40 ans :</strong><br>
+                    "Mon âge pourrait être perçu comme un frein pour certains, mais il m'apporte maturité et stabilité. J'ai fait ce choix en connaissance de cause, ce n'est pas une reconversion de dernier recours."
+                </div>
+                
+                <div class="example example-young">
+                    <strong>Exemple jeune candidat :</strong><br>
+                    "Mon jeune âge peut questionner la solidité de mon projet. C'est pourquoi j'ai multiplié les expériences : stages, bénévolat, rencontres avec des professionnels. Mon choix est mûrement réfléchi."
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">5</div>
+                    <div class="question-title">"Où vous voyez-vous dans 5 ans ?"</div>
+                </div>
+                
+                <div class="trap">
+                    <div class="trap-title">⚠️ Piège :</div>
+                    <p>Viser trop haut ou trop flou</p>
+                </div>
+                
+                <div class="strategy">
+                    <div class="strategy-title">✅ Stratégie :</div>
+                    <p>Évolution réaliste dans le métier</p>
+                </div>
+                
+                <div class="example example-mature">
+                    <strong>Exemple reconversion 40 ans :</strong><br>
+                    "Aide-soignante confirmée, idéalement spécialisée en gériatrie. J'aimerais aussi transmettre mon expérience aux nouveaux arrivants, peut-être comme tutrice de stage."
+                </div>
+                
+                <div class="example example-young">
+                    <strong>Exemple jeune candidat :</strong><br>
+                    "Aide-soignante expérimentée avec une spécialisation, pourquoi pas en pédiatrie. À plus long terme, j'envisage une évolution vers infirmière par la formation continue."
+                </div>
+            </div>
+
+            <!-- Message de soutien à mi-parcours -->
+            <div class="motivation-break">
+                <h3>💪 MESSAGE DE SOUTIEN - Vous êtes à mi-parcours !</h3>
+                <p><strong>👏 Félicitations, vous maîtrisez déjà 5 questions cruciales !</strong></p>
+                <p><strong>💡 Conseil de coach :</strong> N'oubliez jamais : le jury VEUT que vous réussissiez. Ils cherchent de futurs collègues, pas à vous piéger. Votre parcours atypique, votre âge, votre manque d'expérience ne sont PAS des handicaps si vous savez les valoriser.</p>
+                <p><strong>🎯 Rappel important :</strong> Restez authentique, prenez votre temps, souriez !</p>
+                <p><strong>✨ Phrase magique à retenir :</strong> "Je ne suis peut-être pas le candidat idéal sur le papier, mais je suis celui qui a le plus envie d'apprendre et de réussir."</p>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">6</div>
+                    <div class="question-title">"Pourquoi notre établissement ?"</div>
+                </div>
+                
+                <div class="trap">
+                    <div class="trap-title">⚠️ Piège :</div>
+                    <p>"Parce qu'il est proche de chez moi"</p>
+                </div>
+                
+                <div class="strategy">
+                    <div class="strategy-title">✅ Stratégie :</div>
+                    <p>1 élément spécifique sur l'école + vos valeurs</p>
+                </div>
+                
+                <div class="example example-mature">
+                    <strong>Exemple reconversion 40 ans :</strong><br>
+                    "Votre institut a une approche pédagogique qui valorise l'expérience professionnelle antérieure. De plus, vos partenariats avec les EHPAD correspondent à mon projet de spécialisation en gériatrie."
+                </div>
+                
+                <div class="example example-young">
+                    <strong>Exemple jeune candidat :</strong><br>
+                    "Votre taux de réussite au diplôme et l'accompagnement individualisé des étudiants correspondent à mes attentes. J'apprécie aussi votre ouverture sur l'international avec les stages Erasmus."
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">7</div>
+                    <div class="question-title">"Comment gérez-vous le stress ?"</div>
+                </div>
+                
+                <div class="trap">
+                    <div class="trap-title">⚠️ Piège :</div>
+                    <p>"Je ne suis jamais stressée"</p>
+                </div>
+                
+                <div class="strategy">
+                    <div class="strategy-title">✅ Stratégie :</div>
+                    <p>Reconnaissance + stratégies concrètes</p>
+                </div>
+                
+                <div class="example example-mature">
+                    <strong>Exemple reconversion 40 ans :</strong><br>
+                    "Le stress fait partie du métier. Mes années en service client m'ont appris à garder mon calme. Je pratique aussi la respiration profonde et j'ai appris à demander de l'aide quand c'est nécessaire."
+                </div>
+                
+                <div class="example example-young">
+                    <strong>Exemple jeune candidat :</strong><br>
+                    "Je reconnais que le stress peut être présent, surtout au début. Je pratique le sport pour évacuer les tensions et j'ai appris lors de mes stages à prendre du recul et à en parler avec l'équipe."
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">8</div>
+                    <div class="question-title">"Une situation difficile que vous avez vécue ?"</div>
+                </div>
+                
+                <div class="trap">
+                    <div class="trap-title">⚠️ Piège :</div>
+                    <p>Raconter un échec personnel</p>
+                </div>
+                
+                <div class="strategy">
+                    <div class="strategy-title">✅ Stratégie :</div>
+                    <p>Situation professionnelle + apprentissage</p>
+                </div>
+                
+                <div class="example example-mature">
+                    <strong>Exemple reconversion 40 ans :</strong><br>
+                    "Comme ASH, j'ai vécu le décès d'une patiente que je côtoyais depuis des mois. J'ai appris l'importance de prendre de la distance émotionnelle tout en gardant son humanité, et surtout de ne pas rester seule avec ses émotions."
+                </div>
+                
+                <div class="example example-young">
+                    <strong>Exemple jeune candidat :</strong><br>
+                    "Pendant mon stage, j'ai été confrontée à l'agressivité d'un patient désorienté. L'aide-soignante m'a appris à ne pas le prendre personnellement et à adapter ma communication. C'était une leçon précieuse sur la patience et l'adaptation."
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">9</div>
+                    <div class="question-title">"Vos qualités principales ?"</div>
+                </div>
+                
+                <div class="trap">
+                    <div class="trap-title">⚠️ Piège :</div>
+                    <p>Liste de qualités sans exemples</p>
+                </div>
+                
+                <div class="strategy">
+                    <div class="strategy-title">✅ Stratégie :</div>
+                    <p>2-3 qualités avec situations concrètes</p>
+                </div>
+                
+                <div class="example example-mature">
+                    <strong>Exemple reconversion 40 ans :</strong><br>
+                    "Ma patience, développée en élevant mes enfants et confirmée comme ASH avec les patients désorientés. Mon sens de l'organisation, essentiel quand on jongle entre vie famille-travail. Et ma capacité d'écoute, affinée au fil des expériences."
+                </div>
+                
+                <div class="example example-young">
+                    <strong>Exemple jeune candidat :</strong><br>
+                    "Mon empathie naturelle, que j'ai pu développer avec ma petite sœur autiste. Ma capacité d'apprentissage rapide, prouvée par mes bons résultats scolaires. Et ma motivation intacte pour ce métier que je découvre."
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">10</div>
+                    <div class="question-title">"Avez-vous des questions ?"</div>
+                </div>
+                
+                <div class="trap">
+                    <div class="trap-title">⚠️ Piège :</div>
+                    <p>"Non, vous avez tout dit"</p>
+                </div>
+                
+                <div class="strategy">
+                    <div class="strategy-title">✅ Stratégie :</div>
+                    <p>2-3 questions intelligentes préparées</p>
+                </div>
+                
+                <div class="example">
+                    <strong>Questions gagnantes :</strong><br>
+                    • "Quel est le profil des étudiants qui réussissent le mieux chez vous ?"<br>
+                    • "Comment accompagnez-vous les étudiants en difficulté ?"<br>
+                    • "Quels sont vos partenariats pour les stages ?"<br>
+                    • "Y a-t-il des spécialisations proposées pendant la formation ?"
+                </div>
+            </div>
+
+            <h2>2. Maîtriser sa posture et gérer le stress</h2>
+
+            <h3>🧘‍♀️ Techniques anti-stress avant l'entretien</h3>
+
+            <div class="posture-grid">
+                <div class="posture-item">
+                    <div class="posture-title">LA SEMAINE AVANT</div>
+                    <ul>
+                        <li>Répétez à voix haute vos réponses (pas par cœur, mais les idées clés)</li>
+                        <li>Visitez l'établissement pour vous familiariser avec les lieux</li>
+                        <li>Préparez vos affaires la veille</li>
+                        <li>Couchez-vous tôt les 3 derniers jours</li>
+                    </ul>
+                </div>
+                
+                <div class="posture-item">
+                    <div class="posture-title">
