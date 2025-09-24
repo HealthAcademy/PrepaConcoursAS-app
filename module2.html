@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2 : Lettre de motivation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f8fafc;
+            line-height: 1.6;
+            color: #334155;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .content {
+            padding: 2rem 1rem;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            color: #059669;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #475569;
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+        
+        h4 {
+            color: #64748b;
+            font-size: 1rem;
+            margin: 1rem 0 0.5rem 0;
+        }
+        
+        .objective {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            border-left: 4px solid #10b981;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .example {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .good-example {
+            border-left: 4px solid #10b981;
+            background: #f0fdf4;
+        }
+        
+        .bad-example {
+            border-left: 4px solid #ef4444;
+            background: #fef2f2;
+        }
+        
+        .paragraph-structure {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .paragraph-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .paragraph-number {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .paragraph-title {
+            font-weight: 600;
+            color: #059669;
+            margin-bottom: 0.5rem;
+        }
+        
+        .examples-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .example-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .profile-tag {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .profile-tag.mature {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .profile-tag.young {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+        
+        .tip {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .tip-title {
+            color: #d97706;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .advantages-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .advantage-item {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .advantage-title {
+            font-weight: 600;
+            color: #059669;
+            margin-bottom: 0.5rem;
+        }
+        
+        .traps-list {
+            background: #fef2f2;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .traps-list h4 {
+            color: #dc2626;
+            margin-bottom: 1rem;
+        }
+        
+        .navigation-btns {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            gap: 1rem;
+        }
+        
+        .nav-btn {
+            flex: 1;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .nav-btn.prev {
+            background: #64748b;
+            color: white;
+        }
+        
+        .nav-btn.next {
+            background: #10b981;
+            color: white;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        li {
+            margin: 0.5rem 0;
+        }
+        
+        strong {
+            color: #059669;
+        }
+        
+        @media (max-width: 640px) {
+            .header {
+                padding: 1.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .content {
+                padding: 1rem;
+            }
+            
+            .back-btn {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 1rem;
+            }
+            
+            .navigation-btns {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-btn">← Retour à l'accueil</a>
+            <h1>✉️ Module 2 : Lettre de motivation</h1>
+        </header>
+        
+        <div class="content">
+            <div class="objective">
+                <h3>🎯 Objectif du module</h3>
+                <p>Rédiger une lettre de motivation authentique qui vous démarque et donne envie de vous rencontrer.</p>
+                <p><strong>⏱️ Longueur idéale :</strong> 1 page, 300-400 mots maximum</p>
+            </div>
+
+            <h2>1. Anatomie d'une lettre gagnante</h2>
+            
+            <h3>📐 Structure en 4 paragraphes (règle d'or)</h3>
+            
+            <div class="paragraph-structure">
+                <div class="paragraph-item">
+                    <span class="paragraph-number">1</span>
+                    <div class="paragraph-title">L'accroche (2-3 lignes)</div>
+                    <p>• Évitez : "Je me permets de vous adresser..."</p>
+                    <p>• Préférez : Une phrase qui résume VOTRE spécificité</p>
+                </div>
+                
+                <div class="paragraph-item">
+                    <span class="paragraph-number">2</span>
+                    <div class="paragraph-title">Votre parcours (4-5 lignes)</div>
+                    <p>• Pas de CV bis, mais le FIL ROUGE de vos expériences</p>
+                    <p>• Montrez l'évolution logique vers le soin</p>
+                </div>
+                
+                <div class="paragraph-item">
+                    <span class="paragraph-number">3</span>
+                    <div class="paragraph-title">Pourquoi aide-soignant ? (4-5 lignes)</div>
+                    <p>• Votre vision concrète du métier</p>
+                    <p>• Ce que VOUS apportez de unique</p>
+                </div>
+                
+                <div class="paragraph-item">
+                    <span class="paragraph-number">4</span>
+                    <div class="paragraph-title">Pourquoi cet établissement + conclusion (2-3 lignes)</div>
+                    <p>• 1 élément spécifique sur l'école</p>
+                    <p>• Demande d'entretien dynamique</p>
+                </div>
+            </div>
+
+            <h3>🎯 Exemples d'accroches qui marquent</h3>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="profile-tag mature">Reconversion 40 ans</div>
+                    <div class="bad-example">
+                        <strong>❌ À éviter :</strong><br>
+                        "Passionnée par le domaine médical, je souhaite intégrer votre formation..."
+                    </div>
+                    <div class="good-example">
+                        <strong>✅ Préférez :</strong><br>
+                        "À 40 ans, après une pause familiale qui m'a fait découvrir l'importance du soin, je souhaite donner un nouveau sens à ma carrière."
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="profile-tag mature">Expérience ASH</div>
+                    <div class="bad-example">
+                        <strong>❌ À éviter :</strong><br>
+                        "Souhaitant me reconvertir dans le secteur sanitaire..."
+                    </div>
+                    <div class="good-example">
+                        <strong>✅ Préférez :</strong><br>
+                        "Mon expérience d'ASH m'a révélé ma vraie vocation : être au plus près des patients dans leur quotidien."
+                    </div>
+                </div>
+            </div>
+
+            <h3>📝 Exemple de parcours (reconversion 40 ans)</h3>
+            
+            <div class="example good-example">
+                <strong>PARAGRAPHE 2 - Exemple concret :</strong><br><br>
+                "Mes années dans l'esthétique m'ont appris l'écoute et le soin de l'autre. La naissance de mon enfant a interrompu mon parcours professionnel, mais m'a fait découvrir l'accompagnement et la patience. Revenue sur le marché du travail comme ASH, j'ai enfin trouvé ma voie dans le milieu hospitalier, au contact direct des patients et de leurs familles."
+            </div>
+
+            <h2>1 bis. Spécial jeunes candidats (sortie de lycée)</h2>
+
+            <h3>🎓 Quand vous n'avez "pas d'expérience" (mais si, vous en avez !)</h3>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <div class="profile-tag young">Jeune candidat</div>
+                    <div class="bad-example">
+                        <strong>❌ À éviter :</strong><br>
+                        "Jeune diplômée du bac, je n'ai pas d'expérience mais je suis motivée..."
+                    </div>
+                    <div class="good-example">
+                        <strong>✅ Préférez :</strong><br>
+                        "À 18 ans, mon choix est mûrement réfléchi : trois stages m'ont confirmé que ma place est auprès des patients."
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="profile-tag young">Motivation réelle</div>
+                    <div class="bad-example">
+                        <strong>❌ À éviter :</strong><br>
+                        "Passionnée par le secteur médical depuis toujours..."
+                    </div>
+                    <div class="good-example">
+                        <strong>✅ Préférez :</strong><br>
+                        "L'accompagnement de mon grand-père en fin de vie m'a révélé l'importance du rôle aide-soignant."
+                    </div>
+                </div>
+            </div>
+
+            <h3>📝 Vos "vraies" expériences (jeunes candidats)</h3>
+            <p>Jobs étudiants, stages, bénévolat, vie familiale → Transformez tout en compétences transversales</p>
+
+            <div class="example good-example">
+                <strong>Exemple concret :</strong><br><br>
+                "Mes stages de 3ème et terminale en EHPAD m'ont permis d'observer le quotidien des soignants. Mon job d'été comme animatrice de centre aéré a développé ma patience et ma capacité d'adaptation. L'accompagnement de ma sœur handicapée au quotidien m'a appris l'empathie et la bienveillance."
+            </div>
+
+            <h3>🎯 Pourquoi aide-soignant à 18 ans ?</h3>
+
+            <div class="example good-example">
+                <strong>Exemple de PARAGRAPHE 3 (jeune candidat) :</strong><br><br>
+                "Contrairement aux idées reçues, choisir le soin à 18 ans n'est pas un choix par défaut. C'est un métier d'avenir où l'humain reste central. Je veux construire ma carrière dans un domaine où je pourrai évoluer : aide-soignante, puis pourquoi pas infirmière ou cadre de santé."
+            </div>
+
+            <h3>💡 Vos atouts cachés de jeune candidat</h3>
+            
+            <div class="advantages-grid">
+                <div class="advantage-item">
+                    <div class="advantage-title">Énergie et enthousiasme</div>
+                    <p>Naturels et contagieux</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-title">Capacité d'apprentissage</div>
+                    <p>Maximale à votre âge</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-title">Ouverture d'esprit</div>
+                    <p>De votre génération</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-title">Stabilité future</div>
+                    <p>Pas de reconversion à prévoir</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-title">Technologies</div>
+                    <p>Adaptation aux nouvelles technologies du secteur santé</p>
+                </div>
+            </div>
+
+            <div class="traps-list">
+                <h4>⚠️ Pièges à éviter absolument</h4>
+                <ul>
+                    <li>❌ "Je n'ai pas d'expérience mais..." (négatif)</li>
+                    <li>❌ "Je veux aider les gens" (trop vague)</li>
+                    <li>❌ "C'est un métier facile" (méconnaissance)</li>
+                    <li>❌ "En attendant de savoir quoi faire" (manque de conviction)</li>
+                </ul>
+            </div>
+
+            <h2>2. Lettre complète : Exemples types</h2>
+
+            <h3>📄 Modèle reconversion</h3>
+
+            <div class="example good-example">
+                <strong>Objet :</strong> Candidature formation Aide-Soignant - [Votre Nom]<br><br>
+
+                <strong>Madame, Monsieur,</strong><br><br>
+
+                <strong>[PARAGRAPHE 1 - Accroche]</strong><br>
+                À 40 ans, mon expérience d'ASH depuis deux ans m'a révélé ma vraie vocation : être au cœur de la relation de soin, auprès des patients dans leur quotidien le plus intime.<br><br>
+
+                <strong>[PARAGRAPHE 2 - Parcours]</strong><br>
+                Mes années dans l'esthétique m'ont appris l'écoute et le soin de l'autre. La pause familiale qui a suivi m'a fait découvrir l'accompagnement et la patience. Revenue sur le marché du travail comme ASH, j'ai enfin trouvé ma voie dans le milieu hospitalier, confirmée par le contact quotidien avec les patients et leurs familles.<br><br>
+
+                <strong>[PARAGRAPHE 3 - Pourquoi AS]</strong><br>
+                L'aide-soignant incarne pour moi l'essence du soin : il accompagne les gestes du quotidien tout en apportant réconfort et dignité. Ma maturité et mon expérience de mère me donnent cette patience naturelle nécessaire pour accompagner la vulnérabilité avec bienveillance.<br><br>
+
+                <strong>[PARAGRAPHE 4 - Établissement + conclusion]</strong><br>
+                Votre institut, reconnu pour son accompagnement individualisé et ses partenariats avec les EHPAD, correspond parfaitement à mon projet de spécialisation en gériatrie. Je serais honorée de vous exposer ma motivation lors d'un entretien.<br><br>
+
+                <strong>Je vous prie d'agréer, Madame, Monsieur, mes salutations respectueuses.</strong><br><br>
+
+                <strong>[Prénom Nom]</strong>
+            </div>
+
+            <h3>📄 Modèle jeune candidat (18 ans)</h3>
+
+            <div class="example good-example">
+                <strong>Objet :</strong> Candidature formation Aide-Soignant - [Votre Nom]<br><br>
+
+                <strong>Madame, Monsieur,</strong><br><br>
+
+                <strong>[PARAGRAPHE 1 - Accroche]</strong><br>
+                À 18 ans, mon choix d'orientation est le fruit de trois expériences déterminantes : mes stages en EHPAD, l'accompagnement de ma grand-mère malade, et mon engagement comme bénévole en centre de vacances adaptées.<br><br>
+
+                <strong>[PARAGRAPHE 2 - Parcours]</strong><br>
+                Mes stages de 3ème et de terminale en EHPAD m'ont permis d'observer le quotidien des soignants et de comprendre l'importance de leur rôle. Mon job d'été comme animatrice a développé ma patience et ma capacité d'adaptation. L'accompagnement de ma sœur autiste au quotidien m'a appris l'empathie et la bienveillance.<br><br>
+
+                <strong>[PARAGRAPHE 3 - Pourquoi AS]</strong><br>
+                Contrairement aux idées reçues, choisir le soin à 18 ans n'est pas un choix par défaut. L'aide-soignant allie technique et relationnel, c'est exactement ce qui m'attire. Je veux construire ma carrière dans un métier d'avenir où l'humain reste central.<br><br>
+
+                <strong>[PARAGRAPHE 4 - Établissement + conclusion]</strong><br>
+                Votre taux de réussite au diplôme et votre ouverture sur l'international avec les stages Erasmus correspondent parfaitement à mes ambitions. Je serais ravie de vous présenter mon projet lors d'un entretien.<br><br>
+
+                <strong>Je vous prie d'agréer, Madame, Monsieur, mes salutations respectueuses.</strong><br><br>
+
+                <strong>[Prénom Nom]</strong>
+            </div>
+
+            <h2>3. Conseils de finalisation</h2>
+
+            <div class="tip">
+                <div class="tip-title">💡 Relecture finale</div>
+                <ul>
+                    <li>Faites lire votre lettre à 2-3 personnes différentes</li>
+                    <li>Vérifiez que votre personnalité transparaît</li>
+                    <li>Assurez-vous que chaque phrase apporte quelque chose</li>
+                    <li>Contrôlez l'orthographe ET la ponctuation</li>
+                </ul>
+            </div>
+
+            <div class="tip">
+                <div class="tip-title">🎯 Test de qualité</div>
+                <p><strong>Question test :</strong> "Un proche qui ne me connaît pas professionnellement comprend-il mon projet en lisant cette lettre ?"</p>
+                <p>Si la réponse est non, retravaillez la cohérence et la clarté.</p>
+            </div>
+
+            <div class="navigation-btns">
+                <a href="module1.html" class="nav-btn prev">← Module 1 : Dossier</a>
+                <a href="module3.html" class="nav-btn next">Module 3 : Entretien →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
