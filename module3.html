@@ -97,12 +97,6 @@
             padding: 1.5rem;
             margin: 1.5rem 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .question-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
         .question-header {
@@ -122,6 +116,7 @@
             justify-content: center;
             font-weight: bold;
             margin-right: 1rem;
+            flex-shrink: 0;
         }
         
         .question-title {
@@ -163,8 +158,7 @@
             border: 1px solid #e2e8f0;
             border-radius: 8px;
             padding: 1rem;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
+            margin: 0.5rem 0;
             font-size: 0.9rem;
         }
         
@@ -185,7 +179,6 @@
             border-radius: 12px;
             text-align: center;
             margin: 2rem 0;
-            font-style: italic;
         }
         
         .motivation-break h3 {
@@ -280,71 +273,6 @@
             border-left: 3px solid #7c3aed;
         }
         
-        .posture-grid {
-            display: grid;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .posture-item {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .posture-title {
-            font-weight: 600;
-            color: #7c3aed;
-            margin-bottom: 0.5rem;
-        }
-        
-        .emergency-tips {
-            background: #fef2f2;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .emergency-tips h4 {
-            color: #dc2626;
-            margin-bottom: 1rem;
-        }
-        
-        .emergency-scenario {
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            border-left: 3px solid #dc2626;
-        }
-        
-        .after-interview {
-            background: #f0f9ff;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .after-interview h4 {
-            color: #0369a1;
-            margin-bottom: 1rem;
-        }
-        
-        .stats-reminder {
-            background: #f0fdf4;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            text-align: center;
-        }
-        
-        .stats-reminder h4 {
-            color: #059669;
-            margin-bottom: 1rem;
-        }
-        
         .navigation-btns {
             display: flex;
             justify-content: space-between;
@@ -418,6 +346,11 @@
                 align-items: flex-start;
                 gap: 0.5rem;
             }
+            
+            .question-number {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -439,6 +372,7 @@
             
             <h3>🗣️ Top 10 des questions + réponses stratégiques</h3>
 
+            <!-- Question 1 -->
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">1</div>
@@ -456,7 +390,7 @@
                 </div>
                 
                 <div class="example example-mature">
-                    <strong>Exemple reconversion :</strong><br>
+                    <strong>Exemple reconversion 40 ans :</strong><br>
                     "Je suis Marie, 40 ans. Mon parcours m'a menée de l'esthétique à l'hôpital en passant par la maternité. Chaque étape m'a rapprochée du soin : l'écoute client, l'accompagnement maternel, et maintenant le contact patient comme ASH. Aujourd'hui, je veux aller plus loin dans la relation de soin."
                 </div>
                 
@@ -466,6 +400,7 @@
                 </div>
             </div>
 
+            <!-- Question 2 -->
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">2</div>
@@ -483,7 +418,7 @@
                 </div>
                 
                 <div class="example example-mature">
-                    <strong>Exemple reconversion :</strong><br>
+                    <strong>Exemple reconversion 40 ans :</strong><br>
                     "Comme ASH, j'ai réalisé que l'aide-soignant était l'acteur central du bien-être patient. C'est lui qui prend le temps d'écouter, qui adapte les soins à chaque personne. Ma maturité et mon expérience de mère me donnent cette patience naturelle pour accompagner la vulnérabilité."
                 </div>
                 
@@ -493,6 +428,7 @@
                 </div>
             </div>
 
+            <!-- Question 3 -->
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">3</div>
@@ -510,7 +446,7 @@
                 </div>
                 
                 <div class="example example-mature">
-                    <strong>Exemple reconversion :</strong><br>
+                    <strong>Exemple reconversion 40 ans :</strong><br>
                     "L'aide-soignant accompagne les actes de la vie quotidienne : toilette, repas, mobilisation. Mais c'est aussi lui qui rassure lors d'une nuit difficile, qui remarque un changement d'état, qui fait le lien avec l'équipe soignante. J'ai pu l'observer pendant mes 6 mois d'ASH au service gériatrie."
                 </div>
                 
@@ -520,6 +456,7 @@
                 </div>
             </div>
 
+            <!-- Question 4 -->
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">4</div>
@@ -537,7 +474,7 @@
                 </div>
                 
                 <div class="example example-mature">
-                    <strong>Exemple reconversion :</strong><br>
+                    <strong>Exemple reconversion 40 ans :</strong><br>
                     "Mon âge pourrait être perçu comme un frein pour certains, mais il m'apporte maturité et stabilité. J'ai fait ce choix en connaissance de cause, ce n'est pas une reconversion de dernier recours."
                 </div>
                 
@@ -547,6 +484,7 @@
                 </div>
             </div>
 
+            <!-- Question 5 -->
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">5</div>
@@ -564,7 +502,7 @@
                 </div>
                 
                 <div class="example example-mature">
-                    <strong>Exemple reconversion :</strong><br>
+                    <strong>Exemple reconversion 40 ans :</strong><br>
                     "Aide-soignante confirmée, idéalement spécialisée en gériatrie. J'aimerais aussi transmettre mon expérience aux nouveaux arrivants, peut-être comme tutrice de stage."
                 </div>
                 
@@ -574,15 +512,15 @@
                 </div>
             </div>
 
-            <!-- Message de soutien à mi-parcours -->
+            <!-- Message de soutien -->
             <div class="motivation-break">
                 <h3>💪 MESSAGE DE SOUTIEN - Vous êtes à mi-parcours !</h3>
                 <p><strong>👏 Félicitations, vous maîtrisez déjà 5 questions cruciales !</strong></p>
-                <p><strong>💡 Conseil de coach :</strong> N'oubliez jamais : le jury VEUT que vous réussissiez. Ils cherchent de futurs collègues, pas à vous piéger. Votre parcours atypique, votre âge, votre manque d'expérience ne sont PAS des handicaps si vous savez les valoriser.</p>
-                <p><strong>🎯 Rappel important :</strong> Restez authentique, prenez votre temps, souriez !</p>
-                <p><strong>✨ Phrase magique à retenir :</strong> "Je ne suis peut-être pas le candidat idéal sur le papier, mais je suis celui qui a le plus envie d'apprendre et de réussir."</p>
+                <p><strong>💡 Conseil de coach :</strong> N'oubliez jamais : le jury VEUT que vous réussissiez. Ils cherchent de futurs collègues, pas à vous piéger.</p>
+                <p><strong>✨ Phrase magique :</strong> "Je ne suis peut-être pas le candidat idéal sur le papier, mais je suis celui qui a le plus envie d'apprendre et de réussir."</p>
             </div>
 
+            <!-- Questions 6-10 -->
             <div class="question-card">
                 <div class="question-header">
                     <div class="question-number">6</div>
@@ -600,7 +538,7 @@
                 </div>
                 
                 <div class="example example-mature">
-                    <strong>Exemple reconversion :</strong><br>
+                    <strong>Exemple reconversion 40 ans :</strong><br>
                     "Votre institut a une approche pédagogique qui valorise l'expérience professionnelle antérieure. De plus, vos partenariats avec les EHPAD correspondent à mon projet de spécialisation en gériatrie."
                 </div>
                 
@@ -627,7 +565,7 @@
                 </div>
                 
                 <div class="example example-mature">
-                    <strong>Exemple reconversion :</strong><br>
+                    <strong>Exemple reconversion 40 ans :</strong><br>
                     "Le stress fait partie du métier. Mes années en service client m'ont appris à garder mon calme. Je pratique aussi la respiration profonde et j'ai appris à demander de l'aide quand c'est nécessaire."
                 </div>
                 
@@ -654,7 +592,7 @@
                 </div>
                 
                 <div class="example example-mature">
-                    <strong>Exemple reconversion :</strong><br>
+                    <strong>Exemple reconversion 40 ans :</strong><br>
                     "Comme ASH, j'ai vécu le décès d'une patiente que je côtoyais depuis des mois. J'ai appris l'importance de prendre de la distance émotionnelle tout en gardant son humanité, et surtout de ne pas rester seule avec ses émotions."
                 </div>
                 
@@ -681,7 +619,7 @@
                 </div>
                 
                 <div class="example example-mature">
-                    <strong>Exemple reconversion :</strong><br>
+                    <strong>Exemple reconversion 40 ans :</strong><br>
                     "Ma patience, développée en élevant mes enfants et confirmée comme ASH avec les patients désorientés. Mon sens de l'organisation, essentiel quand on jongle entre vie famille-travail. Et ma capacité d'écoute, affinée au fil des expériences."
                 </div>
                 
@@ -718,18 +656,265 @@
 
             <h2>2. Maîtriser sa posture et gérer le stress</h2>
 
-            <h3>🧘‍♀️ Techniques anti-stress avant l'entretien</h3>
+            <h3>🧘‍♀️ Techniques anti-stress</h3>
 
-            <div class="posture-grid">
-                <div class="posture-item">
-                    <div class="posture-title">LA SEMAINE AVANT</div>
-                    <ul>
-                        <li>Répétez à voix haute vos réponses (pas par cœur, mais les idées clés)</li>
-                        <li>Visitez l'établissement pour vous familiariser avec les lieux</li>
-                        <li>Préparez vos affaires la veille</li>
-                        <li>Couchez-vous tôt les 3 derniers jours</li>
-                    </ul>
+            <div class="strategy">
+                <h4>LA SEMAINE AVANT :</h4>
+                <ul>
+                    <li>Répétez à voix haute vos réponses (idées clés, pas par cœur)</li>
+                    <li>Visitez l'établissement pour vous familiariser</li>
+                    <li>Préparez vos affaires la veille</li>
+                    <li>Couchez-vous tôt les 3 derniers jours</li>
+                </ul>
+            </div>
+
+            <div class="strategy">
+                <h4>LE JOUR J - 30 minutes avant :</h4>
+                <ul>
+                    <li>Arrivez 15 minutes en avance (pas plus)</li>
+                    <li>Respirations profondes : 4 sec inspiration, 4 sec expiration</li>
+                    <li>Répétez votre phrase d'accroche mentalement</li>
+                    <li>Visualisez positivement la fin de l'entretien</li>
+                </ul>
+            </div>
+
+            <h3>👔 Posture et communication non-verbale</h3>
+
+            <div class="example">
+                <h4>TENUE VESTIMENTAIRE :</h4>
+                <strong>Femmes :</strong> Tailleur ou ensemble sobre, talons petits, maquillage discret<br>
+                <strong>Hommes :</strong> Costume ou pantalon-chemise, cravate optionnelle<br>
+                <strong>Tous :</strong> Couleurs neutres (bleu, gris, noir), pas de parfum fort
+            </div>
+
+            <div class="example">
+                <h4>LANGAGE CORPOREL GAGNANT :</h4>
+                • Poignée de main ferme et brève<br>
+                • Contact visuel avec chaque membre du jury<br>
+                • Posture droite sans être rigide<br>
+                • Mains posées sur la table ou les genoux<br>
+                • Sourire naturel dès l'entrée
+            </div>
+
+            <h3>⚡ Gérer les moments difficiles</h3>
+
+            <div class="situation-card">
+                <h4>SI VOUS BLOQUEZ sur une question :</h4>
+                <div class="good-response">
+                    "Je peux avoir quelques secondes pour réfléchir ?"<br>
+                    Respirez, reformulez la question, puis répondez calmement.
+                </div>
+            </div>
+
+            <div class="situation-card">
+                <h4>SI VOUS NE SAVEZ PAS :</h4>
+                <div class="good-response">
+                    "Je n'ai pas d'expérience directe sur ce point, mais voici ce que j'en pense..."<br>
+                    Puis liez à une expérience similaire.
+                </div>
+            </div>
+
+            <h2>3. Mises en situation et cas pratiques</h2>
+
+            <h3>🎭 Les 5 types de mises en situation les plus fréquentes</h3>
+
+            <div class="situation-card">
+                <div class="situation-title">SITUATION 1 : Patient agressif</div>
+                <div class="situation-scenario">
+                    <strong>Énoncé :</strong> "Vous entrez dans la chambre pour la toilette, le patient vous crie dessus et refuse les soins."
                 </div>
                 
-                <div class="posture-item">
-                    <div class="posture-title">
+                <div class="bad-response">
+                    <strong>❌ Réponse à éviter :</strong><br>
+                    "Je lui explique que c'est pour son bien et j'insiste."
+                </div>
+                
+                <div class="good-response">
+                    <strong>✅ Réponse attendue :</strong><br>
+                    "Je reste calme et je recule légèrement pour ne pas l'envahir. Je lui demande ce qui ne va pas et j'essaie de comprendre son refus. Si nécessaire, je propose de revenir plus tard ou je sollicite un collègue. L'important est de respecter son refus tout en assurant sa sécurité."
+                </div>
+            </div>
+
+            <div class="situation-card">
+                <div class="situation-title">SITUATION 2 : Chute d'un patient</div>
+                <div class="situation-scenario">
+                    <strong>Énoncé :</strong> "Vous trouvez un patient au sol dans sa chambre."
+                </div>
+                
+                <div class="bad-response">
+                    <strong>❌ Réponse à éviter :</strong><br>
+                    "Je le relève immédiatement pour qu'il soit confortable."
+                </div>
+                
+                <div class="good-response">
+                    <strong>✅ Réponse attendue :</strong><br>
+                    "Je vérifie d'abord qu'il est conscient et je lui parle pour le rassurer. Je ne le bouge pas et j'appelle immédiatement l'infirmier ou le médecin. Je reste avec lui pour le surveiller et je note l'heure et les circonstances pour le compte-rendu."
+                </div>
+            </div>
+
+            <div class="situation-card">
+                <div class="situation-title">SITUATION 3 : Famille en colère</div>
+                <div class="situation-scenario">
+                    <strong>Énoncé :</strong> "La famille d'un patient vous reproche de mal vous occuper de leur proche."
+                </div>
+                
+                <div class="bad-response">
+                    <strong>❌ Réponse à éviter :</strong><br>
+                    "Ce n'est pas vrai, on fait de notre mieux ici."
+                </div>
+                
+                <div class="good-response">
+                    <strong>✅ Réponse attendue :</strong><br>
+                    "Je comprends leur inquiétude et leur colère. J'écoute leurs reproches sans me justifier dans un premier temps. Je propose ensuite de faire le point avec l'infirmier référent ou le cadre pour clarifier la situation et améliorer la prise en charge si nécessaire."
+                </div>
+            </div>
+
+            <div class="situation-card">
+                <div class="situation-title">SITUATION 4 : Collègue en difficulté</div>
+                <div class="situation-scenario">
+                    <strong>Énoncé :</strong> "Vous voyez un collègue faire une erreur dans les soins."
+                </div>
+                
+                <div class="bad-response">
+                    <strong>❌ Réponse à éviter :</strong><br>
+                    "Ce n'est pas mon problème, chacun sa responsabilité."
+                </div>
+                
+                <div class="good-response">
+                    <strong>✅ Réponse attendue :</strong><br>
+                    "Je m'approche discrètement de mon collègue et je lui fais remarquer l'erreur. Si c'est grave, j'alerte l'infirmier. La sécurité du patient prime sur la gêne de corriger un collègue. On travaille en équipe."
+                </div>
+            </div>
+
+            <div class="situation-card">
+                <div class="situation-title">SITUATION 5 : Refus de soins</div>
+                <div class="situation-scenario">
+                    <strong>Énoncé :</strong> "Un patient refuse catégoriquement de prendre ses médicaments."
+                </div>
+                
+                <div class="bad-response">
+                    <strong>❌ Réponse à éviter :</strong><br>
+                    "Je lui dis que c'est obligatoire et j'insiste."
+                </div>
+                
+                <div class="good-response">
+                    <strong>✅ Réponse attendue :</strong><br>
+                    "Je respecte son refus dans un premier temps et je cherche à comprendre pourquoi : peur, douleur, incompréhension ? J'explique simplement l'importance du traitement et je préviens l'infirmier qui pourra adapter l'approche ou contacter le médecin."
+                </div>
+            </div>
+
+            <h3>🎯 Les 3 principes d'or pour toutes les situations</h3>
+            
+            <div class="golden-principles">
+                <div class="principle-item">
+                    <div class="principle-number">1. SÉCURITÉ D'ABORD</div>
+                    <p>Patient, vous, équipe</p>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-number">2. COMMUNICATION</div>
+                    <p>Écouter avant d'agir</p>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-number">3. TRAVAIL D'ÉQUIPE</div>
+                    <p>Alerter, transmettre, collaborer</p>
+                </div>
+            </div>
+
+            <div class="magic-phrases">
+                <h4>💡 Phrases magiques à retenir</h4>
+                <ul>
+                    <li>"Je reste avec lui pour le rassurer"</li>
+                    <li>"Je préviens l'infirmier immédiatement"</li>
+                    <li>"Je respecte son choix tout en assurant sa sécurité"</li>
+                    <li>"Je propose une alternative"</li>
+                    <li>"Je note tout dans le dossier de soins"</li>
+                </ul>
+            </div>
+
+            <h2>4. Après l'entretien : optimiser vos chances</h2>
+
+            <h3>📝 Les 30 minutes qui suivent (crucial !)</h3>
+
+            <div class="strategy">
+                <h4>IMMÉDIATEMENT APRÈS :</h4>
+                <ul>
+                    <li>Notez vos impressions à chaud dans votre téléphone</li>
+                    <li>Relevez les questions auxquelles vous avez moins bien répondu</li>
+                    <li>Mémorisez les prénoms des membres du jury si vous les avez retenus</li>
+                    <li>Notez l'ambiance générale : bienveillante, neutre, froide ?</li>
+                </ul>
+            </div>
+
+            <div class="strategy">
+                <h4>ANALYSE À FROID (le soir même) :</h4>
+                <ul>
+                    <li>✅ Points positifs : Qu'est-ce qui s'est bien passé ?</li>
+                    <li>❌ Points d'amélioration : Que feriez-vous différemment ?</li>
+                    <li>🤔 Questions surprises : Y a-t-il eu des questions inattendues ?</li>
+                    <li>⏰ Durée : L'entretien était-il plus court/long que prévu ?</li>
+                </ul>
+            </div>
+
+            <h3>📧 Le suivi post-entretien (optionnel mais efficace)</h3>
+
+            <div class="example">
+                <h4>EMAIL DE REMERCIEMENT (dans les 24h) :</h4>
+                <strong>Objet :</strong> Remerciements - Entretien formation Aide-Soignant<br><br>
+
+                Madame, Monsieur,<br><br>
+
+                Je vous remercie pour l'accueil et le temps que vous m'avez consacré hier lors de l'entretien pour intégrer votre formation d'aide-soignant.<br><br>
+
+                Cet échange a renforcé ma motivation et ma certitude que votre établissement correspond parfaitement à mon projet professionnel.<br><br>
+
+                Dans l'attente de votre réponse, je vous prie d'agréer mes salutations respectueuses.<br><br>
+
+                [Prénom Nom]
+            </div>
+
+            <div class="trap">
+                <h4>⚠️ Attention :</h4>
+                <ul>
+                    <li>Maximum 5 lignes</li>
+                    <li>Pas de relance si pas de réponse</li>
+                    <li>Seulement si vous avez une adresse email</li>
+                </ul>
+            </div>
+
+            <h3>🔄 Si c'est un échec : rebondir intelligemment</h3>
+
+            <div class="strategy">
+                <h4>DEMANDER UN RETOUR CONSTRUCTIF :</h4>
+                <p>"Pourriez-vous me donner quelques conseils pour améliorer ma candidature l'année prochaine ?"</p>
+                
+                <h4>PRÉPARER LA SUITE :</h4>
+                <ul>
+                    <li>Candidater ailleurs avec votre expérience acquise</li>
+                    <li>Renforcer votre profil : stage, bénévolat, formation complémentaire</li>
+                    <li>Retravailler les points faibles identifiés</li>
+                    <li>Garder le moral : un échec n'est pas une fin en soi</li>
+                </ul>
+            </div>
+
+            <h3>✅ Si c'est un succès : bien commencer</h3>
+
+            <div class="strategy">
+                <ul>
+                    <li>Confirmer votre place rapidement</li>
+                    <li>Préparer la rentrée : matériel, logement, organisation</li>
+                    <li>État d'esprit positif : vous allez y arriver !</li>
+                </ul>
+            </div>
+
+            <div class="motivation-break">
+                <h3>🎯 Statistiques rassurantes</h3>
+                <ul>
+                    <li><strong>70% des candidats</strong> stressent autant que vous</li>
+                    <li><strong>Un bon dossier</strong> peut compenser un entretien moyen</li>
+                    <li><strong>La motivation sincère</strong> rattrape souvent les imperfections</li>
+                    <li><strong>Chaque école</strong> a sa propre culture</li>
+                </ul>
+                
+                <h3>💪 Message final</h3>
+                <p>Quel que soit le résultat, vous avez franchi une étape importante dans votre parcours. Cette expérience vous servira, que ce soit pour cette formation ou pour la suite de votre projet professionnel.</p>
+            </div>
