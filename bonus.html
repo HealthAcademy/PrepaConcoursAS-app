@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonus : Outils pratiques</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f8fafc;
+            line-height: 1.6;
+            color: #334155;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .content {
+            padding: 2rem 1rem;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            color: #d97706;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #475569;
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+        
+        h4 {
+            color: #64748b;
+            font-size: 1rem;
+            margin: 1rem 0 0.5rem 0;
+        }
+        
+        .objective {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .planning-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .week-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        
+        .week-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .week-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .week-number {
+            background: #f59e0b;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .week-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .tasks-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .tasks-list li {
+            background: #f8fafc;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+            border-left: 3px solid #f59e0b;
+        }
+        
+        .profile-section {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .profile-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .profile-mature {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .profile-young {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+        
+        .profile-noexp {
+            background: #f0fdf4;
+            color: #15803d;
+        }
+        
+        .phrase-list {
+            background: #fffbeb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .phrase-list h4 {
+            color: #d97706;
+            margin-bottom: 1rem;
+        }
+        
+        .phrase-list ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .phrase-list li {
+            background: white;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            border-left: 3px solid #f59e0b;
+            font-style: italic;
+        }
+        
+        .resources-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .resource-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .resource-title {
+            font-weight: 600;
+            color: #d97706;
+            margin-bottom: 0.5rem;
+        }
+        
+        .checklist-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .checklist-section {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .checklist-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        
+        .checklist-checkbox {
+            margin-right: 0.75rem;
+            margin-top: 0.125rem;
+            flex-shrink: 0;
+        }
+        
+        .final-message {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .final-message h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .contacts-section {
+            background: #f0f9ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .contacts-section h4 {
+            color: #0369a1;
+            margin-bottom: 1rem;
+        }
+        
+        .navigation-btns {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            gap: 1rem;
+        }
+        
+        .nav-btn {
+            flex: 1;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .nav-btn.prev {
+            background: #64748b;
+            color: white;
+        }
+        
+        .nav-btn.home {
+            background: #10b981;
+            color: white;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        li {
+            margin: 0.5rem 0;
+        }
+        
+        strong {
+            color: #d97706;
+        }
+        
+        @media (max-width: 640px) {
+            .header {
+                padding: 1.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .content {
+                padding: 1rem;
+            }
+            
+            .back-btn {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 1rem;
+            }
+            
+            .navigation-btns {
+                flex-direction: column;
+            }
+            
+            .week-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .week-number {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-btn">← Retour à l'accueil</a>
+            <h1>🎁 Bonus : Outils pratiques</h1>
+        </header>
+        
+        <div class="content">
+            <div class="objective">
+                <h3>🚀 Outils pratiques pour réussir</h3>
+                <p>Tous les éléments complémentaires pour optimiser votre préparation et maximiser vos chances de réussite.</p>
+            </div>
+
+            <h2>1. Planning de préparation (8 semaines)</h2>
+            
+            <div class="planning-grid">
+                <div class="week-card">
+                    <div class="week-header">
+                        <div class="week-number">8-7</div>
+                        <div class="week-title">Semaines 7-8 : Préparation du dossier</div>
+                    </div>
+                    <ul class="tasks-list">
+                        <li><strong>Semaine 8 :</strong> Rédaction brouillon lettre motivation + projet professionnel</li>
+                        <li><strong>Semaine 7 :</strong> Finalisation dossier + relecture par un proche</li>
+                        <li>Rassemblement des pièces justificatives</li>
+                        <li>Première version CV mise à jour</li>
+                    </ul>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <div class="week-number">6-5</div>
+                        <div class="week-title">Semaines 5-6 : Préparation entretien</div>
+                    </div>
+                    <ul class="tasks-list">
+                        <li><strong>Semaine 6 :</strong> Apprentissage des réponses aux 10 questions</li>
+                        <li><strong>Semaine 5 :</strong> Entraînement mises en situation + simulation</li>
+                        <li>Recherche d'informations sur l'établissement</li>
+                        <li>Préparation de vos questions à poser</li>
+                    </ul>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <div class="week-number">4-3</div>
+                        <div class="week-title">Semaines 3-4 : Perfectionnement</div>
+                    </div>
+                    <ul class="tasks-list">
+                        <li><strong>Semaine 4 :</strong> Entretien blanc avec famille/amis</li>
+                        <li><strong>Semaine 3 :</strong> Recherche spécifique sur l'établissement</li>
+                        <li>Peaufinage du discours et des exemples</li>
+                        <li>Gestion du stress et techniques de relaxation</li>
+                    </ul>
+                </div>
+                
+                <div class="week-card">
+                    <div class="week-header">
+                        <div class="week-number">2-1</div>
+                        <div class="week-title">Semaines 1-2 : Finalisation</div>
+                    </div>
+                    <ul class="tasks-list">
+                        <li><strong>Semaine 2 :</strong> Choix tenue + repérage trajet</li>
+                        <li><strong>Semaine 1 :</strong> Révisions légères + gestion stress</li>
+                        <li>Préparation matérielle (dossier, tenue)</li>
+                        <li>Dernières simulations courtes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>2. Check-list matériel entretien</h2>
+            
+            <div class="checklist-grid">
+                <div class="checklist-section">
+                    <div class="checklist-title">📋 À préparer la veille</div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox">
+                        <span><strong>Dossier de candidature</strong> (original + 2 copies)</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox">
+                        <span><strong>Pièce d'identité</strong> + photocopies diplômes</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox">
+                        <span><strong>Tenue professionnelle</strong> repassée et prête</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox">
+                        <span><strong>Itinéraire</strong> + temps de trajet + 15 minutes marge</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox">
+                        <span><strong>Questions à poser</strong> notées sur un papier</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox">
+                        <span><strong>Bouteille d'eau</strong> (pour la gorge)</span>
+                    </div>
+                </div>
+                
+                <div class="checklist-section">
+                    <div class="checklist-title">📱 Dans votre téléphone</div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox">
+                        <span><strong>Numéro de l'établissement</strong> (en cas de retard)</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox">
+                        <span><strong>Adresse GPS</strong> précise</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox">
+                        <span><strong>Horaire exact</strong> de convocation</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox">
+                        <span><strong>Photo de votre convocation</strong> (en cas de perte)</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>3. Phrases d'accroche par profil</h2>
+            
+            <div class="profile-section">
+                <div class="profile-tag profile-mature">🔄 Reconversion professionnelle</div>
+                <div class="phrase-list">
+                    <ul>
+                        <li>"À 40 ans, ma reconversion n'est pas subie mais choisie"</li>
+                        <li>"Mon expérience de vie est un atout pour comprendre la vulnérabilité"</li>
+                        <li>"Chaque étape de mon parcours m'a rapproché du soin"</li>
+                        <li>"Ma maturité me donne une vision claire du métier et de l'engagement"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <div class="profile-tag profile-young">👶 Jeune candidat</div>
+                <div class="phrase-list">
+                    <ul>
+                        <li>"Mon jeune âge me donne une énergie et une motivation intactes"</li>
+                        <li>"J'ai choisi ce métier en connaissance de cause, pas par défaut"</li>
+                        <li>"Ma génération apporte un regard neuf sur le soin"</li>
+                        <li>"À 18 ans, mon projet est mûrement réfléchi"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <div class="profile-tag profile-noexp">🎓 Sans expérience médicale</div>
+                <div class="phrase-list">
+                    <ul>
+                        <li>"Mon parcours atypique est ma force, pas ma faiblesse"</li>
+                        <li>"Mes compétences transversales sont directement applicables au soin"</li>
+                        <li>"Je viens au métier d'aide-soignant avec un regard externe enrichissant"</li>
+                        <li>"Mon regard neuf et ma motivation intacte sont des atouts pour apprendre"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>4. Ressources complémentaires</h2>
+            
+            <div class="resources-grid">
+                <div class="resource-item">
+                    <div class="resource-title">📚 Pour approfondir vos connaissances</div>
+                    <ul>
+                        <li><strong>Code de la santé publique</strong> : rôle officiel aide-soignant</li>
+                        <li><strong>Site ameli.fr</strong> : parcours de soins, secteur santé</li>
+                        <li><strong>Chaînes YouTube</strong> : "Objectif IFAS", "Soignant en EHPAD"</li>
+                    </ul>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-title">🏥 Pour découvrir les terrains de stage</div>
+                    <ul>
+                        <li><strong>EHPAD</strong> : gériatrie, fin de vie</li>
+                        <li><strong>Hôpital</strong> : médecine, chirurgie, urgences</li>
+                        <li><strong>Psychiatrie</strong> : relation thérapeutique spécifique</li>
+                        <li><strong>Domicile</strong> : autonomie, coordination</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="contacts-section">
+                <h4>📞 Contacts utiles d'urgence</h4>
+                <ul>
+                    <li><strong>Numéro vert orientation</strong> : 0800 600 700</li>
+                    <li><strong>Pôle emploi formation</strong> : financement possible</li>
+                    <li><strong>Mission locale</strong> (- de 26 ans) : accompagnement</li>
+                </ul>
+            </div>
+
+            <h2>5. Message de motivation finale</h2>
+            
+            <div class="final-message">
+                <h3>🌟 Vous avez maintenant tous les outils !</h3>
+                
+                <p><strong>Cette formation vous a donné :</strong></p>
+                <p>✅ <strong>La structure parfaite</strong> pour votre dossier</p>
+                <p>✅ <strong>Les réponses aux 10 questions</strong> incontournables</p>
+                <p>✅ <strong>La gestion des mises en situation</strong></p>
+                <p>✅ <strong>La confiance</strong> pour réussir votre entretien</p>
+                
+                <h3 style="margin-top: 2rem;">Rappelez-vous :</h3>
+                <p>• <strong>Votre parcours est unique</strong> et c'est votre force</p>
+                <p>• <strong>Votre motivation est sincère</strong> et ça se sent</p>
+                <p>• <strong>Vous méritez cette place</strong> autant que les autres</p>
+                
+                <h3 style="margin-top: 2rem;">🎯 Dernière phrase à retenir :</h3>
+                <p style="font-size: 1.2rem; font-weight: bold; margin-top: 1rem;">
+                    "Je ne suis peut-être pas le candidat parfait sur le papier, mais je suis celui qui a le plus envie de réussir et d'apprendre."
+                </p>
+                
+                <h3 style="margin-top: 2rem;">💪 Allez-y, vous allez réussir !</h3>
+            </div>
+
+            <div class="navigation-btns">
+                <a href="module3.html" class="nav-btn prev">← Module 3 : Entretien</a>
+                <a href="index.html" class="nav-btn home">🏠 Retour accueil</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
